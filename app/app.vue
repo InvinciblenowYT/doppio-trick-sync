@@ -28,14 +28,14 @@ useHead({
         <div class="hero__content">
           <h1 class="hero__title">
             Geld Sparen mit dem
-            <span class="hero__title-accent">Doppio&nbsp;Trick</span>
+            <span class="hero__title-accent">Doppio-Trick</span>
           </h1>
           <p class="hero__subtitle">
-            Mit dem Doppio Trick kannst du bis zu
+            Mit dem Doppio-Trick kannst du bis zu
             <span class="hero__highlight">700&nbsp;CHF pro Jahr</span>
             sparen.
           </p>
-          <p class="hero__note">* beim Kauf von 3 SBB-Doppios anstatt 6 SBB-Espressos pro Woche</p>
+          <p class="hero__note">* beim Kauf von 3&nbsp;SBB-Doppios anstatt 6&nbsp;SBB-Espressos pro Woche</p>
 
           <a class="hero__cta" href="#details">
             Erfahre wie
@@ -62,7 +62,7 @@ useHead({
         </p>
 
         <p>
-          Deshalb lohnt es sich, anstatt zwei Espressos nur <b>einen</b> Doppio zu bestellen. Es bietet sich zusätzlich
+          Deshalb lohnt es sich, anstatt zwei Espressos nur <strong>einen</strong> Doppio zu bestellen. Es bietet sich zusätzlich
           an, einen zweiten Becher dazu bestellen, damit beide Personen ihren Espresso separat geniessen können.
         </p>
 
@@ -99,7 +99,7 @@ useHead({
         <ul>
           <li><a href="https://tribeka.at/">tribeka-Glas</a></li>
           <li>
-            <a href="https://www.recircle.ch/produkte/verpackungen/">reCIRCLE CUP</a>
+            <a href="https://www.recircle.ch/produkte/verpackungen/">reCIRCLE&nbsp;CUP</a>
           </li>
           <li>
             <a href="https://www.barilla.com/en-us/products/pesto/pesto-pasta-sauce"
