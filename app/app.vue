@@ -252,7 +252,7 @@ body {
 
 /* ---------- Details / table section ---------- */
 .content {
-  padding: clamp(3rem, 5vw, 3rem) 2rem clamp(5rem, 10vw, 8rem);
+  padding: 1rem 1rem 20vh 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -260,6 +260,7 @@ body {
 }
 
 .content__inner {
+  width: 100%;
   max-width: 760px;
   margin: 0 auto;
 }
