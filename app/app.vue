@@ -1,25 +1,24 @@
 <script setup lang="ts">
 useHead({
-  htmlAttrs: { lang: 'de' },
-  title: 'Geld Sparen mit dem Doppio Trick',
+  htmlAttrs: { lang: "de" },
+  title: "Geld Sparen mit dem Doppio Trick",
   meta: [
     {
-      name: 'description',
-      content:
-        'Mit dem Doppio Trick sparst du bis zu 700 CHF pro Jahr – ein Doppio statt zwei Espressos.',
+      name: "description",
+      content: "Mit dem Doppio Trick sparst du bis zu 700 CHF pro Jahr – ein Doppio statt zwei Espressos.",
     },
-    { name: 'robots', content: 'noindex, nofollow' },
-    { name: 'googlebot', content: 'noindex, nofollow' },
+    { name: "robots", content: "noindex, nofollow" },
+    { name: "googlebot", content: "noindex, nofollow" },
   ],
   link: [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
     {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap',
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
     },
   ],
-})
+});
 </script>
 
 <template>
@@ -36,9 +35,7 @@ useHead({
             <span class="hero__highlight">700&nbsp;CHF pro Jahr</span>
             sparen.
           </p>
-          <p class="hero__note">
-            * bei 3 Doppios pro Woche im Vergleich zu 2 Espressos
-          </p>
+          <p class="hero__note">* beim Kauf von 3 SBB-Doppios anstatt 6 SBB-Espressos pro Woche</p>
 
           <a class="hero__cta" href="#details">
             Erfahre wie
@@ -57,12 +54,18 @@ useHead({
       </div>
     </section>
 
-    <section id="details" class="details">
-      <div class="details__inner">
+    <div class="content">
+      <section id="details" class="content__inner">
         <p class="details__lead">
-          Ein Doppio kostet oftmals nur ein bisschen mehr wie ein Espresso,
-          beinhaltet aber die <strong>doppelte Menge</strong>.
+          Ein Doppio kostet oftmals nur ein bisschen mehr wie ein Espresso, beinhaltet aber die
+          <strong>doppelte Menge</strong>.
         </p>
+
+        <p>
+          Deshalb lohnt es sich, anstatt zwei Espressos nur <b>einen</b> Doppio zu bestellen. Es bietet sich zusätzlich
+          an, einen zweiten Becher dazu bestellen, damit beide Personen ihren Espresso separat geniessen können.
+        </p>
+
         <p class="details__sub">An diesen Orten kannst du sparen:</p>
 
         <div class="table-wrap">
@@ -85,8 +88,31 @@ useHead({
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+      </section>
+      <section class="content__inner">
+        <h2>Zusätzliche Tipps & Tricks</h2>
+        <h3>Alternative Behälter</h3>
+        <p>
+          Der Erhalt eines zweiten Bechers oder einer zweiten Tasse ist nicht immer möglich. Wir empfehlen folgende
+          alternative Behälter zum selbst mitbringen:
+        </p>
+        <ul>
+          <li><a href="https://tribeka.at/">tribeka-Glas</a></li>
+          <li>
+            <a href="https://www.recircle.ch/produkte/verpackungen/">reCIRCLE CUP</a>
+          </li>
+          <li>
+            <a href="https://www.barilla.com/en-us/products/pesto/pesto-pasta-sauce"
+              >Barilla-Pesto-Glas (gutes Auswaschen zwingend nötig)
+            </a>
+          </li>
+        </ul>
+        <p>
+          * Doppio Consulting bekommt kein Geld und steht in keinem Verhältnis mit den oben genannten Produkten und
+          Firmen. Es handelt sich um eine persönliche Empfehlung basierend auf Erfahrung.
+        </p>
+      </section>
+    </div>
   </main>
 </template>
 
@@ -101,8 +127,8 @@ useHead({
   --ink: #23292b;
   --ink-soft: #4d585c;
   --ink-faint: #8a9296;
-  --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 * {
@@ -203,7 +229,10 @@ body {
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 10px 24px -12px rgba(33, 65, 76, 0.7);
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .hero__cta:hover {
@@ -222,12 +251,15 @@ body {
 }
 
 /* ---------- Details / table section ---------- */
-.details {
-  padding: clamp(4rem, 9vw, 7rem) 2rem clamp(5rem, 10vw, 8rem);
+.content {
+  padding: clamp(3rem, 5vw, 3rem) 2rem clamp(5rem, 10vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   background: var(--bg-bottom);
 }
 
-.details__inner {
+.content__inner {
   max-width: 760px;
   margin: 0 auto;
 }
@@ -327,16 +359,8 @@ body {
   height: auto;
   max-width: 520px;
   /* Feather the edges so the photo dissolves into the matching page background */
-  -webkit-mask-image: radial-gradient(
-    ellipse 90% 86% at 50% 49%,
-    #000 48%,
-    transparent 82%
-  );
-  mask-image: radial-gradient(
-    ellipse 90% 86% at 50% 49%,
-    #000 48%,
-    transparent 82%
-  );
+  -webkit-mask-image: radial-gradient(ellipse 90% 86% at 50% 49%, #000 48%, transparent 82%);
+  mask-image: radial-gradient(ellipse 90% 86% at 50% 49%, #000 48%, transparent 82%);
 }
 
 /* ---------- Responsive ---------- */
