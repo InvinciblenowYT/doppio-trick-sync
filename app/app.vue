@@ -241,23 +241,17 @@ a:not(.hero__cta):hover {
   gap: 0.6rem;
   margin-top: 2.25rem;
   padding: 0.95rem 1.7rem;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--teal);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 10px 24px -12px rgba(33, 65, 76, 0.7);
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .hero__cta:hover {
   background: var(--teal-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 30px -12px rgba(33, 65, 76, 0.75);
 }
 
 .hero__cta-arrow {
@@ -436,9 +430,11 @@ a:not(.hero__cta):hover {
 }
 
 .saving {
-  display: inline-block;
+  padding: 0.05em 0.25em;
+  margin-right: -0.25em;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--teal-dark);
+  background: linear-gradient(rgba(216, 155, 85, 0.42), rgba(216, 155, 85, 0.42)) no-repeat 0 85% / 100% 45%;
 }
 
 .content .table-note {
@@ -584,7 +580,7 @@ a:not(.hero__cta):hover {
     }
 
     .saving {
-      animation: pop linear both;
+      animation: underline linear both;
       animation-timeline: view();
       animation-range: entry 50% cover 35%;
     }
@@ -602,13 +598,6 @@ a:not(.hero__cta):hover {
   from {
     opacity: 0;
     transform: translateY(24px);
-  }
-}
-
-@keyframes pop {
-  from {
-    transform: scale(0.85);
-    opacity: 0;
   }
 }
 
