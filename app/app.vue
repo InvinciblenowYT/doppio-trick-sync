@@ -376,8 +376,7 @@ a:not(.hero__cta):hover {
 }
 
 .table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 
 .price-table {
