@@ -3,12 +3,18 @@ useHead({
   htmlAttrs: { lang: "de" },
   title: "Geld Sparen mit dem Doppio Trick",
   meta: [
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
     {
       name: "description",
       content: "Mit dem Doppio Trick sparst du bis zu 700 CHF pro Jahr – ein Doppio statt zwei Espressos.",
     },
-    { name: "robots", content: "noindex, nofollow" },
-    { name: "googlebot", content: "noindex, nofollow" },
+    // Prevent indexing in dev; production builds are indexable.
+    ...(import.meta.dev
+      ? [
+          { name: "robots", content: "noindex, nofollow" },
+          { name: "googlebot", content: "noindex, nofollow" },
+        ]
+      : []),
   ],
   link: [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -141,6 +147,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -376,7 +383,8 @@ a:not(.hero__cta):hover {
 }
 
 .table-wrap {
-  overflow-x: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .price-table {
@@ -489,6 +497,20 @@ a:not(.hero__cta):hover {
   .price-table th,
   .price-table td {
     padding-inline: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__inner {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero__media img {
+    max-width: 100%;
+  }
+
+  .content {
+    padding-inline: 1rem;
   }
 }
 
