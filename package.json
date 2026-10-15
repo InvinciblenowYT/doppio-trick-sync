@@ -2,6 +2,7 @@
   "name": "doppio-website",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@11.28.5",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
