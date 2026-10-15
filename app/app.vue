@@ -376,7 +376,7 @@ a:not(.hero__cta):hover {
 }
 
 .table-wrap {
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .price-table {
@@ -390,7 +390,6 @@ a:not(.hero__cta):hover {
 .price-table td {
   padding: 0.8rem 1rem;
   text-align: left;
-  white-space: nowrap;
 }
 
 .price-table th:first-child,
