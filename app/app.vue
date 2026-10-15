@@ -57,13 +57,13 @@ useHead({
     <div class="content">
       <section id="details" class="content__inner">
         <p class="details__lead">
-          Ein Doppio kostet oftmals nur ein bisschen mehr wie ein Espresso, beinhaltet aber die
-          <strong>doppelte Menge</strong>.
+          Ein Doppio kostet oftmals nur ein bisschen mehr als ein Espresso, beinhaltet aber die
+          <strong class="details__mark">doppelte Menge</strong>.
         </p>
 
         <p>
           Deshalb lohnt es sich, anstatt zwei Espressos nur <strong>einen</strong> Doppio zu bestellen. Es bietet sich zusätzlich
-          an, einen zweiten Becher dazu bestellen, damit beide Personen ihren Espresso separat geniessen können.
+          an, einen zweiten Becher dazuzubestellen, damit beide Personen ihren Espresso separat geniessen können.
         </p>
 
         <p class="details__sub">An diesen Orten kannst du sparen:</p>
@@ -73,41 +73,39 @@ useHead({
             <thead>
               <tr>
                 <th scope="col">Ort</th>
-                <th scope="col" class="num">Preis Espresso</th>
-                <th scope="col" class="num">Preis Doppio</th>
-                <th scope="col" class="num">gespart</th>
+                <th scope="col" class="num">Espresso</th>
+                <th scope="col" class="num">Doppio</th>
+                <th scope="col" class="num">Gespart</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">SBB Restaurant</th>
-                <td class="num">5.20 CHF</td>
-                <td class="num">5.90 CHF</td>
-                <td class="num"><span class="saving">+ 4.50 CHF</span></td>
+                <td class="num">5.20</td>
+                <td class="num">5.90</td>
+                <td class="num"><span class="saving">+4.50</span></td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p class="table-note">Preise in CHF. Gespart: zwei Espressos im Vergleich zu einem Doppio.</p>
       </section>
-      <section class="content__inner">
+      <section class="content__inner tips">
         <h2>Zusätzliche Tipps & Tricks</h2>
         <h3>Alternative Behälter</h3>
         <p>
           Der Erhalt eines zweiten Bechers oder einer zweiten Tasse ist nicht immer möglich. Wir empfehlen folgende
           alternative Behälter zum selbst mitbringen:
         </p>
-        <ul>
+        <ul class="vessels">
           <li><a href="https://tribeka.at/">tribeka-Glas</a></li>
+          <li><a href="https://www.recircle.ch/produkte/verpackungen/">reCIRCLE&nbsp;CUP</a></li>
           <li>
-            <a href="https://www.recircle.ch/produkte/verpackungen/">reCIRCLE&nbsp;CUP</a>
-          </li>
-          <li>
-            <a href="https://www.barilla.com/en-us/products/pesto/pesto-pasta-sauce"
-              >Barilla-Pesto-Glas (gutes Auswaschen zwingend nötig)
-            </a>
+            <a href="https://www.barilla.com/en-us/products/pesto/pesto-pasta-sauce">Barilla-Pesto-Glas</a>
+            <span class="vessels__note">Gutes Auswaschen zwingend nötig.</span>
           </li>
         </ul>
-        <p>
+        <p class="small-print">
           * Doppio Consulting bekommt kein Geld und steht in keinem Verhältnis mit den oben genannten Produkten und
           Firmen. Es handelt sich um eine persönliche Empfehlung basierend auf Erfahrung.
         </p>
@@ -151,6 +149,27 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Links: a thin amber underline that fills up into a highlight on hover */
+a:not(.hero__cta) {
+  color: var(--teal-dark);
+  font-weight: 500;
+  text-decoration: none;
+  background: linear-gradient(rgba(216, 155, 85, 0.45), rgba(216, 155, 85, 0.45)) no-repeat 0 100% / 100% 2px;
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
+  transition: background-size 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+a:not(.hero__cta):hover {
+  background-size: 100% 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .hero {
@@ -204,7 +223,7 @@ body {
 .hero__highlight {
   font-weight: 600;
   color: var(--teal-dark);
-  background: linear-gradient(transparent 60%, rgba(216, 155, 85, 0.42) 0);
+  background: linear-gradient(rgba(216, 155, 85, 0.42), rgba(216, 155, 85, 0.42)) no-repeat 0 88% / 100% 40%;
   padding: 0 0.08em;
   white-space: nowrap;
 }
@@ -255,8 +274,81 @@ body {
   padding: 1rem 1rem 20vh 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: clamp(4rem, 9vw, 7rem);
   background: var(--bg-bottom);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.content p {
+  margin: 0 0 1em;
+  max-width: 65ch;
+}
+
+.content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.content h2 {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.content h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.vessels {
+  list-style: none;
+  margin: 1.25rem 0 2.5rem;
+  padding: 0;
+}
+
+.vessels li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.vessels li + li {
+  margin-top: 0.6rem;
+}
+
+.vessels li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.9rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--amber);
+}
+
+.vessels a {
+  font-size: 1.125rem;
+}
+
+.vessels__note {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--ink-faint);
+}
+
+.content .small-print {
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-faint);
 }
 
 .content__inner {
@@ -265,8 +357,9 @@ body {
   margin: 0 auto;
 }
 
-.details__lead {
-  margin: 0;
+.content .details__lead {
+  margin: 0 0 1.25rem;
+  max-width: none;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
@@ -275,12 +368,13 @@ body {
   color: var(--ink);
 }
 
-.details__lead strong {
+.details__lead .details__mark {
   color: var(--teal);
   font-weight: 600;
+  background: linear-gradient(rgba(216, 155, 85, 0.42), rgba(216, 155, 85, 0.42)) no-repeat 0 88% / 100% 34%;
 }
 
-.details__sub {
+.content .details__sub {
   margin: 1.75rem 0 1.5rem;
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   font-weight: 500;
@@ -289,62 +383,68 @@ body {
 
 .table-wrap {
   overflow-x: auto;
-  border-radius: 16px;
-  box-shadow: 0 24px 50px -28px rgba(33, 65, 76, 0.45);
 }
 
 .price-table {
   width: 100%;
   border-collapse: collapse;
-  background: #fbfbfa;
-  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
-  overflow: hidden;
-  border-radius: 16px;
+  font-size: clamp(1rem, 1.4vw, 1.0625rem);
+  font-variant-numeric: tabular-nums;
 }
 
-.price-table thead th {
-  background: var(--teal);
-  color: #fff;
-  font-weight: 600;
+.price-table th,
+.price-table td {
+  padding: 0.8rem 1rem;
   text-align: left;
-  padding: 1.1rem 1.25rem;
   white-space: nowrap;
 }
 
-.price-table th.num,
-.price-table td.num {
+.price-table th:first-child,
+.price-table td:first-child {
+  padding-left: 0;
+}
+
+.price-table th:last-child,
+.price-table td:last-child {
+  padding-right: 0;
+}
+
+.price-table .num {
   text-align: right;
-  font-variant-numeric: tabular-nums;
+}
+
+.price-table thead th {
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-faint);
 }
 
 .price-table tbody th,
 .price-table tbody td {
-  padding: 1.1rem 1.25rem;
-  border-top: 1px solid rgba(33, 65, 76, 0.1);
+  border-bottom: 1px solid rgba(33, 65, 76, 0.15);
 }
 
 .price-table tbody th {
   font-weight: 600;
   color: var(--ink);
-  text-align: left;
 }
 
 .price-table tbody td {
   color: var(--ink-soft);
 }
 
-.price-table tbody tr:hover {
-  background: rgba(216, 155, 85, 0.07);
-}
-
 .saving {
   display: inline-block;
-  padding: 0.3rem 0.65rem;
-  border-radius: 999px;
-  background: rgba(216, 155, 85, 0.2);
-  color: var(--teal-dark);
   font-weight: 700;
-  white-space: nowrap;
+  color: var(--teal);
+}
+
+.content .table-note {
+  margin: 0.9rem 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
 }
 
 /* ---------- Image column ---------- */
@@ -389,6 +489,132 @@ body {
 
   .hero__title-accent {
     display: inline;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding-inline: 0.6rem;
+  }
+}
+
+/* ---------- Load sequence ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__title,
+  .hero__subtitle,
+  .hero__note,
+  .hero__cta {
+    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+
+  .hero__subtitle {
+    animation-delay: 0.15s;
+  }
+
+  .hero__note {
+    animation-delay: 0.25s;
+  }
+
+  .hero__cta {
+    animation-delay: 0.35s;
+  }
+
+  /* The cup slides onto the table and settles */
+  .hero__media img {
+    animation: settle 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s backwards;
+  }
+
+  .hero__highlight {
+    animation: underline 0.7s cubic-bezier(0.6, 0, 0.2, 1) 0.9s backwards;
+  }
+
+  .hero__cta-arrow {
+    animation: nudge 1s ease-in-out 1.8s 2;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translate(4%, -3%) rotate(-14deg) scale(0.96);
+  }
+}
+
+@keyframes underline {
+  from {
+    background-size: 0% 40%;
+  }
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* ---------- Scroll-driven ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The cup turns on its saucer as the hero scrolls away */
+    .hero__media {
+      animation: turn linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    .details__lead,
+    .table-wrap,
+    .tips h2,
+    .vessels li {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+
+    .details__mark {
+      animation: underline linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 40%;
+    }
+
+    .saving {
+      animation: pop linear both;
+      animation-timeline: view();
+      animation-range: entry 50% cover 35%;
+    }
+  }
+}
+
+@keyframes turn {
+  to {
+    transform: rotate(40deg) translateY(6%);
+    opacity: 0.5;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 </style>
