@@ -8,13 +8,6 @@ useHead({
       name: "description",
       content: "Mit dem Doppio Trick sparst du bis zu 700 CHF pro Jahr – ein Doppio statt zwei Espressos.",
     },
-    // Prevent indexing in dev; production builds are indexable.
-    ...(import.meta.dev
-      ? [
-          { name: "robots", content: "noindex, nofollow" },
-          { name: "googlebot", content: "noindex, nofollow" },
-        ]
-      : []),
   ],
   link: [
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
