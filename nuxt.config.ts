@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 const isProd = process.env.ENVIRONMENT === 'prod'
 
 export default defineNuxtConfig({
@@ -16,7 +15,12 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/**': {
-      headers: isProd ? {} : { 'X-Robots-Tag': 'noindex, nofollow' },
+      ...(!isProd && {
+        headers: {
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      }),
     },
   },
 })
+
