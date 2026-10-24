@@ -3,10 +3,12 @@ name: Mirror to separate repo
 
 on:
   push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   mirror:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
@@ -15,7 +17,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Push all branches and tags
+      - name: Push main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.MIRROR_SSH_PRIVATE_KEY }}
         run: |
@@ -32,5 +34,4 @@ jobs:
           git remote add mirror \
             git@github.com:InvinciblenowYT/doppio-trick-sync.git
 
-          git push mirror --all
-          git push mirror --tags
+          git push mirror HEAD:refs/heads/main
