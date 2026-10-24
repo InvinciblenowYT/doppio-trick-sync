@@ -1,10 +1,25 @@
 
 name: Mirror to separate repo
 
+# Vercel deploys from the mirror. Each push to main becomes one commit on the
+# mirror, authored by the mirror owner (the Vercel account owner), so Vercel
+# never rejects a deployment because of who wrote the original commit.
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: mirror
+  cancel-in-progress: false
+
+env:
+  MIRROR_REPO: git@github.com:InvinciblenowYT/doppio-trick-sync.git
+  GIT_AUTHOR_NAME: InvinciblenowYT
+  GIT_AUTHOR_EMAIL: 79261691+InvinciblenowYT@users.noreply.github.com
+  GIT_COMMITTER_NAME: InvinciblenowYT
+  GIT_COMMITTER_EMAIL: 79261691+InvinciblenowYT@users.noreply.github.com
 
 jobs:
   mirror:
@@ -14,10 +29,9 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           persist-credentials: false
 
-      - name: Push main
+      - name: Push main as mirror owner
         env:
           SSH_PRIVATE_KEY: ${{ secrets.MIRROR_SSH_PRIVATE_KEY }}
         run: |
@@ -31,7 +45,21 @@ jobs:
           git config core.sshCommand \
             "ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes"
 
-          git remote add mirror \
-            git@github.com:InvinciblenowYT/doppio-trick-sync.git
+          git remote add mirror "$MIRROR_REPO"
 
-          git push mirror HEAD:refs/heads/main
+          parent=()
+          if git fetch --depth=1 mirror main; then
+            if [ "$(git rev-parse 'FETCH_HEAD^{tree}')" = "$(git rev-parse 'HEAD^{tree}')" ]; then
+              echo "Mirror already up to date"
+              exit 0
+            fi
+            parent=(-p FETCH_HEAD)
+          fi
+
+          commit=$(
+            { git log -1 --format=%B HEAD
+              echo "Mirrored from ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+            } | git commit-tree 'HEAD^{tree}' "${parent[@]}"
+          )
+
+          git push mirror "$commit:refs/heads/main"
