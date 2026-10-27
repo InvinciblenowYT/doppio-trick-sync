@@ -1,4 +1,14 @@
 <script setup lang="ts">
+interface Doppio {
+  ort: string;
+  espresso: string;
+  doppio: string;
+  gespart: string;
+}
+
+const doppioFiles = import.meta.glob<Doppio>("../content/doppios/*.json", { eager: true, import: "default" });
+const doppios = Object.values(doppioFiles).sort((a, b) => a.ort.localeCompare(b.ort, "de"));
+
 useHead({
   htmlAttrs: { lang: "de" },
   title: "Geld Sparen mit dem Doppio Trick",
@@ -78,11 +88,11 @@ useHead({
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">SBB Restaurant</th>
-                <td class="num">5.20</td>
-                <td class="num">5.90</td>
-                <td class="num"><span class="saving">+4.50</span></td>
+              <tr v-for="doppio in doppios" :key="doppio.ort">
+                <th scope="row">{{ doppio.ort }}</th>
+                <td class="num">{{ doppio.espresso }}</td>
+                <td class="num">{{ doppio.doppio }}</td>
+                <td class="num"><span class="saving">{{ doppio.gespart }}</span></td>
               </tr>
             </tbody>
           </table>

@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: doppio-consulting/doppio-website
+  branch: main
+  # base_url is set to the current origin in index.html
+  auth_endpoint: api/auth
+
+media_folder: /public/media
+public_folder: /media
+
+slug:
+    encoding: ascii
+    clean_accents: true
+    sanitize_replacement: "-"
+
+collections:
+  - name: doppios
+    label: Doppios
+    label_singular: Doppio
+    identifier_field: ort
+    slug: "{{slug}}"
+    format: json
+    folder: /content/doppios
+    summary: "{{ort}}"
+    fields:
+      - { label: Ort, name: ort, widget: string }
+      - { label: Espresso, name: espresso, widget: string }
+      - { label: Doppio, name: doppio, widget: string }
+      - { label: Gespart, name: gespart, widget: string }
